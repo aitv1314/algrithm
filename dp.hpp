@@ -3,7 +3,7 @@
 */
 
 #include <map>
-#include <ctime>
+#include <chrono>
 #include <iostream>
 
 class Dp1 {
@@ -11,12 +11,21 @@ class Dp1 {
   int GetNumOfWays(int n);
 
   static void DpTestCase1(int n) {
-    auto dp1 = new Dp1;
+    std::cout << "func: " << __func__ << std::endl;
 
-    std::time_t t1 = std::time(0);
+    auto dp1 = new Dp1;
+    uint64_t t1 =
+        std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::system_clock::now().time_since_epoch())
+            .count();
+
     int ways = dp1->GetNumOfWays(n);
-    std::time_t t2 = std::time(0);
-    std::cout << "n = " << n << "; ways = " << ways << "; time cost = " << t2 - t1 << "s" << std::endl;
+
+    uint64_t t2 =
+        std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::system_clock::now().time_since_epoch())
+            .count();
+
+    std::cout << "n = " << n << "; ways = " << ways << "; time cost = " << t2 - t1 << "ns" << std::endl;
+    std::cout << "func: " << __func__ << " end" << std::endl;
   }
 
  public:

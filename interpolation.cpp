@@ -28,6 +28,8 @@ void Interpolation::straiht_line_interpolation(int x, int y) {
 
       // step 3 : compute new error
       error = abs(1 * y - 0 * x);
+
+      // step 4 : determine where to go next
       F = F - error;
 
       printf("(%d,%d)\r\n", draw[0], draw[1]);
